@@ -15,11 +15,12 @@
       devShells.default = (pkgs.buildFHSUserEnv {
         name = "platformio-fhs";
         targetPkgs = pkgs: (with pkgs; [
-          platformio avrdude
+          platformio
           platformio-core
-          zsh
+          avrdude
         ]);
         runScript = pkgs.writeScript "init.sh" ''
+          echo "Initializing PlatformIO environment"
           exec bash
         '';
       }).env;
